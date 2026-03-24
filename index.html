@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devils Clothing | Propor Parceria</title>
+  <meta name="description" content="Landing page para quem deseja propor uma parceria para a Devils Clothing." />
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0d0d0f;
+      --card: rgba(14, 14, 16, 0.92);
+      --card-2: rgba(10, 10, 12, 0.95);
+      --text: #f5f5f5;
+      --muted: #a1a1aa;
+      --muted-2: #71717a;
+      --line: rgba(255, 255, 255, 0.08);
+      --red: #c1121f;
+      --red-2: #ef4444;
+      --red-3: #7f1d1d;
+      --glow: rgba(193, 18, 31, 0.35);
+      --success: #dcfce7;
+      --success-bg: rgba(20, 83, 45, 0.25);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --shadow-main: 0 30px 90px rgba(0, 0, 0, 0.55);
+      --shadow-red: 0 0 45px rgba(193, 18, 31, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(193, 18, 31, 0.20), transparent 28%),
+        radial-gradient(circle at bottom, rgba(127, 29, 29, 0.18), transparent 35%),
+        linear-gradient(180deg, #030303 0%, #070707 45%, #050505 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.14;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand-kicker {
+      color: var(--red-2);
+      font-size: 12px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .brand-title {
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 0.92;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .top-tag {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--red-2);
+      box-shadow: 0 0 18px var(--red-2);
+      animation: pulse 1.6s infinite;
+      flex: 0 0 auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.65; }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero,
+    .form-card {
+      background:
+        linear-gradient(180deg, rgba(12,12,14,0.96), rgba(7,7,8,0.98));
+      padding: 30px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 40px;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(239, 68, 68, 0.18), transparent 22%),
+        radial-gradient(circle at 88% 82%, rgba(127, 29, 29, 0.24), transparent 26%),
+        linear-gradient(145deg, rgba(12,12,14,0.92), rgba(5,5,6,0.96));
+      backdrop-filter: blur(10px);
+    }
+
+    .form-card {
+      background: var(--card-2);
+      padding: 28px;
+    }
+
+    .sigil-mark {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 86px;
+      height: 86px;
+      opacity: 0.14;
+      filter: drop-shadow(0 0 18px rgba(239, 68, 68, 0.22));
+      pointer-events: none;
+    }
+
+    .sigil-mark svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .glow-a,
+    .glow-b {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    .glow-a {
+      width: 250px;
+      height: 250px;
+      left: -70px;
+      top: -70px;
+      background: rgba(193, 18, 31, 0.24);
+    }
+
+    .glow-b {
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      bottom: -90px;
+      background: rgba(127, 29, 29, 0.22);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(193, 18, 31, 0.30);
+      background: linear-gradient(180deg, rgba(127, 29, 29, 0.18), rgba(127, 29, 29, 0.08));
+      color: #fca5a5;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-weight: 700;
+      margin-bottom: 22px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .hero h2 {
+      font-size: clamp(36px, 5.8vw, 74px);
+      line-height: 0.93;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+      max-width: 760px;
+    }
+
+    .hero h2 .accent {
+      color: var(--red-2);
+      text-shadow: 0 0 24px rgba(239, 68, 68, 0.22);
+    }
+
+    .hero p.lead {
+      margin-top: 22px;
+      max-width: 720px;
+      color: #d4d4d8;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .mini-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      min-height: 150px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .mini-card h3 {
+      color: #f87171;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d4d4d8;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+    }
+
+    .form-kicker {
+      color: var(--muted-2);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      margin-bottom: 12px;
+    }
+
+    .form-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .form-desc {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    form {
+      margin-top: 24px;
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      color: #e4e4e7;
+      font-size: 14px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0, 0, 0, 0.52);
+      color: white;
+      border-radius: 18px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      font-size: 15px;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 132px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #666;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: var(--red-2);
+      box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      width: 100%;
+      border: 0;
+      cursor: pointer;
+      padding: 18px 22px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #7f1d1d, #dc2626 52%, #ef4444);
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 18px 50px rgba(193, 18, 31, 0.28), inset 0 1px 0 rgba(255,255,255,0.12);
+      transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px) scale(1.01);
+      filter: brightness(1.06);
+    }
+
+    .btn:active {
+      transform: scale(0.99);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted-2);
+      line-height: 1.7;
+      font-size: 12px;
+    }
+
+    .success {
+      display: none;
+      min-height: 620px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 22px;
+    }
+
+    .success.show {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .success-icon {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(127, 29, 29, 0.26), rgba(127, 29, 29, 0.14));
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      box-shadow: var(--shadow-red);
+      font-size: 38px;
+    }
+
+    .success-kicker {
+      margin-top: 18px;
+      color: #f87171;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-size: 11px;
+    }
+
+    .success h3 {
+      margin-top: 16px;
+      font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+      max-width: 480px;
+    }
+
+    .success p {
+      margin-top: 16px;
+      color: #d4d4d8;
+      line-height: 1.8;
+      max-width: 470px;
+      font-size: 16px;
+    }
+
+    .outline-btn {
+      margin-top: 22px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      font-size: 12px;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .outline-btn:hover {
+      border-color: var(--red-2);
+      color: #fecaca;
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #5f5f67;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 11px;
+      padding: 4px 8px 0;
+    }
+
+    .form-hidden {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .success {
+        min-height: auto;
+        padding: 48px 12px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100% - 20px, 1200px);
+        padding-top: 20px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .top-tag {
+        text-align: left;
+      }
+
+      .hero,
+      .form-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero p.lead {
+        font-size: 16px;
+      }
+
+      .btn {
+        letter-spacing: 0.14em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div>
+        <div class="brand-kicker">Devils Clothing</div>
+        <h1 class="brand-title">Proponha uma parceria para a Devils Clothing.</h1>
+      </div>
+      <div class="top-tag">
+        <span class="dot"></span>
+        <span>Creators, marcas, bandas, tattoo e projetos autorais</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <article class="hero">
+        <div class="sigil-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 8 L91 82 H9 Z" stroke="currentColor" stroke-width="3.2" color="#ef4444"/>
+            <circle cx="50" cy="55" r="22" stroke="currentColor" stroke-width="3" color="#ef4444"/>
+            <path d="M50 19 L68 68 H32 Z" stroke="currentColor" stroke-width="2.4" color="#ef4444"/>
+            <path d="M19 82 H81" stroke="currentColor" stroke-width="3" color="#ef4444"/>
+          </svg>
+        </div>
+        <span class="glow-a"></span>
+        <span class="glow-b"></span>
+
+        <div class="pill">⛧ Espaço aberto para propostas de parceria</div>
+
+        <h2>
+          Se a sua ideia tem <span class="accent">presença</span>, estética e propósito,
+          a Devils quer conhecer.
+        </h2>
+
+        <p class="lead">
+          Essa página é para quem quer apresentar uma proposta de parceria para a Devils Clothing.
+          Pode ser collab, campanha, conteúdo, presença em evento, ensaio, ação com banda,
+          tattoo, creator ou qualquer projeto com identidade real. Se fizer sentido com a marca,
+          a gente entra em contato.
+        </p>
+
+        <div class="cards">
+          <div class="mini-card">
+            <h3>Identidade real</h3>
+            <p>Queremos propostas com personalidade, narrativa e estética alinhada ao universo da marca.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Proposta clara</h3>
+            <p>Quanto mais objetiva for a ideia, mais fácil avaliar formato, potencial e encaixe com a Devils.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Curadoria da marca</h3>
+            <p>Nem toda proposta entra. A seleção passa por aderência visual, energia e valor estratégico.</p>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Moda</span>
+          <span class="tag">Tattoo</span>
+          <span class="tag">Música</span>
+          <span class="tag">Creator</span>
+          <span class="tag">Lifestyle</span>
+        </div>
+      </article>
+
+      <aside class="form-card">
+        <div id="formBlock">
+          <div class="form-kicker">Envie sua proposta</div>
+          <h2 class="form-title">Apresente sua ideia para a Devils Clothing.</h2>
+          <p class="form-desc">
+            Preencha suas informações e explique sua proposta de forma objetiva. Se houver conexão com a marca,
+            entraremos em contato.
+          </p>
+
+          <form id="parceriaForm">
+            <div class="row-2">
+              <div class="field">
+                <label for="nome">Seu nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="field">
+                <label for="marca">Marca ou projeto</label>
+                <input type="text" id="marca" name="marca" placeholder="Nome da marca ou projeto" required />
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="instagram">Instagram</label>
+                <input type="text" id="instagram" name="instagram" placeholder="@seuuser" required />
+              </div>
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required />
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="voce@email.com" required />
+              </div>
+              <div class="field">
+                <label for="segmento">Segmento</label>
+                <input type="text" id="segmento" name="segmento" placeholder="Moda, tattoo, música, creator..." required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="ideia">Sua proposta de parceria</label>
+              <textarea id="ideia" name="ideia" placeholder="Ex: collab de camiseta, campanha com creator, banda usando a marca, ensaio, evento, coleção especial..." required></textarea>
+            </div>
+
+            <button class="btn" type="submit">Enviar proposta</button>
+
+            <p class="note">
+              Ao enviar, sua proposta será avaliada pela Devils Clothing. Se fizer sentido para a marca,
+              entraremos em contato.
+            </p>
+          </form>
+        </div>
+
+        <div class="success" id="successBlock">
+          <div class="success-icon">⛧</div>
+          <div class="success-kicker">Formulário enviado</div>
+          <h3>Sua proposta entrou no radar da Devils Clothing.</h3>
+          <p>
+            Recebemos suas informações. Se a sua proposta fizer sentido com o universo da marca,
+            entraremos em contato.
+          </p>
+          <button class="outline-btn" id="resetFormBtn" type="button">Enviar outro cadastro</button>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">Devils Clothing • Propostas com peso, estética e identidade</footer>
+  </main>
+
+  <script>
+    const form = document.getElementById('parceriaForm');
+    const formBlock = document.getElementById('formBlock');
+    const successBlock = document.getElementById('successBlock');
+    const resetFormBtn = document.getElementById('resetFormBtn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      fetch("https://formspree.io/f/xeepjezd", {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          formBlock.classList.add('form-hidden');
+          successBlock.classList.add('show');
+        } else {
+          alert("Erro ao enviar. Tente novamente.");
+        }
+      }).catch(() => {
+        alert("Erro ao enviar. Verifique sua conexão.");
+      });
+    });
+
+    resetFormBtn.addEventListener('click', function () {
+      form.reset();
+      formBlock.classList.remove('form-hidden');
+      successBlock.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
